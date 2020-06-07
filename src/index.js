@@ -5,9 +5,15 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import 'font-awesome/css/font-awesome.css';
+import {Provider} from 'react-redux'
+import rootReducer from './Redux/Reducers/rootReducer'
+import {createStore, applyMiddleware} from 'redux'
+import  thunk from 'redux-thunk'
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={createStore(rootReducer,applyMiddleware(thunk))}>
+         <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
