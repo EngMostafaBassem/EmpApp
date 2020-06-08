@@ -4,19 +4,29 @@ import {useParams} from 'react-router-dom'
 import {LocalForm,Control,Errors} from 'react-redux-form'
 import {Label,FormGroup,Container,Row,Col, Button} from 'reactstrap'
 import {useHistory} from 'react-router-dom'
-import {useSelector} from 'react-redux'
+import {useSelector,useDispatch} from 'react-redux'
+import {POST_EMP,FetchEmp}from '../../Redux/Actions/empActions'
 const FormEmp=(props)=>{
     const history=useHistory()
+
+const dispatch=useDispatch()
 const params=useParams()
 
+
 const formSubmit=(values)=>{
+
     console.log(values)
+    dispatch(POST_EMP(values))
     history.goBack()
+    
+   
 }
 const requiredStr=(val) => val && val.length;
 const ageCheck=(val)=>val&&val>15
 const empData=useSelector(state=>state.showEmpReducer)
  const [empInfo,setImpInfo]=useState({employee_name:'',employee_salary:'',employee_age:''})
+
+
 useEffect(()=>{
 
     if(params.empName)

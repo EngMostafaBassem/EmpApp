@@ -18,12 +18,22 @@ const showEmpReducer=(state={
             
         case actionTypes.FETCH_EMP_RESULT:
 
-        console.log('reducer')
-            console.log(action.payload)
+       
 
             return {...state,loadingState:false,err:null,result:action.payload} 
             
             
+
+         case actionTypes.ADD_EMP:
+          
+         const newEmp={
+             employee_name:action.payload.name,
+             employee_age:action.payload.age,
+             employee_salary:action.payload.salary,
+             id:action.payload.id
+         }
+         
+             return {...state,loadingState:false,err:null,result:[...state.result,newEmp]}   
          default:
              return state   
 

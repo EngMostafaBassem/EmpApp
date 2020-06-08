@@ -1,16 +1,26 @@
 
 import React, { useEffect } from 'react'
-import {useSelector} from 'react-redux'
-import {Container,Row,Col, Button} from 'reactstrap'
+import {useSelector, shallowEqual} from 'react-redux'
+import {Container,Row,Col, Button,Alert} from 'reactstrap'
 import {Link} from 'react-router-dom'
 import './ShowEmp.scss'
 import Loading from '../Loading'
+
 const ShowEmp=()=>{
 
- const empData=useSelector(state=>state.showEmpReducer)
+ const empData=useSelector(state=>state.showEmpReducer,shallowEqual)
+ 
+
+
+
     
     return(
         <div>
+
+     
+
+
+
 
             <div className="add-btn">
              <Link to="/Add">
